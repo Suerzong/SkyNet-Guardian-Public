@@ -1,0 +1,11 @@
+# SYN泛洪检测规则
+name: syn_flood_detection
+description: 检测SYN Flood攻击
+conditions:
+  - type: ratio
+    field: syn_packets
+    total_field: total_packets
+    threshold: 0.8
+    window: 5
+action: alert
+severity: high

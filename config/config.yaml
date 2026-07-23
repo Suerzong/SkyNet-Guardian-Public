@@ -1,0 +1,35 @@
+# 天网卫士系统配置
+
+# 日志配置
+logging:
+  level: INFO
+  file: logs/skynet.log
+
+# 告警采集配置
+collector:
+  interval: 60  # 采集间隔（秒）
+  sources:
+    - type: syslog
+      host: localhost
+      port: 514
+    - type: file
+      path: /var/log/firewall.log
+
+# 清洗配置
+cleaner:
+  dedup_window: 300  # 去重时间窗口（秒）
+  similarity_threshold: 0.85  # 相似度阈值
+
+# 规则引擎配置
+rule_engine:
+  rules_dir: config/rules
+
+# AI检测配置
+ai:
+  model_path: models/anomaly_detector.pth
+  confidence_threshold: 0.7
+  llm_model: Qwen2.5-1.5B-Instruct
+
+# 数据库配置
+database:
+  path: data/processed/alerts.db

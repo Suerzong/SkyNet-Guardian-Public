@@ -1,0 +1,10 @@
+# 端口扫描检测规则
+name: port_scan_detection
+description: 检测端口扫描行为
+conditions:
+  - type: count
+    field: dst_port
+    threshold: 50
+    window: 10  # 秒
+action: alert
+severity: medium
